@@ -1,0 +1,20 @@
+name: Görüntüleme Bildirimi
+
+on:
+  watch:
+    types: [started]
+
+jobs:
+  send_email_notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.example.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: Görüntüleme Bildirimi
+          to: zehrawsq@gmail.com
+          body: Birisi repository'nizi görüntüledi.
